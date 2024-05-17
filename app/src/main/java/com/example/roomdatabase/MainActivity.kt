@@ -11,16 +11,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        dataBase = Room.databaseBuilder(applicationContext,
-        ContactDataBase::class.java,
-        "contactDB").build()
+        dataBase = ContactDataBase.getDatabase(this)
         GlobalScope.launch {
-            dataBase.contactDao().insertContact(Contact(0,"viaksh","564437567"))
-            dataBase.contactDao().insertContact(Contact(0,"jon","564437567"))
+            dataBase.contactDao().insertContact(Contact(0,"rohan","564437567",1))
 
 
         }
-
-
     }
 }
