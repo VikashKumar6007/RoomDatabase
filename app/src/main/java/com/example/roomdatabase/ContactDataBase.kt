@@ -8,13 +8,13 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [Contact::class], version = 3)
+@Database(entities = [Contact::class], version = 4)
 abstract class ContactDataBase : RoomDatabase() {
     abstract fun contactDao() :ContactDAO
 
     companion object{
 //        migration is used if we are switiching one version to another
-        val migration2_3 = object :Migration(2,3){
+        val migration3_5 = object :Migration(3,4){
             override fun migrate(database: SupportSQLiteDatabase) {
 
             }
@@ -32,7 +32,7 @@ abstract class ContactDataBase : RoomDatabase() {
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
                         ContactDataBase::class.java,
                         "contactDB")
-                        .addMigrations(migration2_3)
+                        .addMigrations(migration3_5)
                         .build()
                 }
 
